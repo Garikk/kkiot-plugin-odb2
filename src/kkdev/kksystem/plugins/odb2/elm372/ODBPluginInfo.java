@@ -21,6 +21,7 @@ public final class ODBPluginInfo  {
         Ret.PluginDescription="Basic ELM327 ODB2 Reader plugin";
         Ret.PluginType = KK_PLUGIN_TYPE.PLUGIN_INPUT;
         Ret.PluginVersion=1;
+        Ret.Enabled=true;
         return Ret;
     }
 }

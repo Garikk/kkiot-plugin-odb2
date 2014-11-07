@@ -5,17 +5,11 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-
-<PluginInfo>
-    <PluginName>
-        KKODB2Reader
-    </PluginName>
-    <PluginDescription>
-        Basic ELM327 ODB2 Reader plugin
-    </PluginDescription>
-    <PluginType>
-        PluginConsts.KK_PLUGIN_TYPE.PLUGIN_INPUT
-    </PluginType>
-    <PluginJarName>kksystem.plugin.odb2.jar</PluginJarName>
-    <ConnectorClass>kkdev.kksystem.plugins.odb2.elm372.KKPlugin
-</PluginInfo>
+<kkdev.kksystem.base.classes.PluginInfo>
+  <PluginName>KKODB2Reader</PluginName>
+  <PluginDescription>ODB2 ELM327 Reader</PluginDescription>
+  <PluginType>PLUGIN_INPUT</PluginType>
+  <PluginVersion>0</PluginVersion>
+  <ConnectorClass>kkdev.kksystem.plugins.odb2.elm372.KKPlugin</ConnectorClass>
+  <Enabled>false</Enabled>
+</kkdev.kksystem.base.classes.PluginInfo>
