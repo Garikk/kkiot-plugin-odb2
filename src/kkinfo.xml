@@ -10,6 +10,11 @@ and open the template in the editor.
   <PluginDescription>ODB2 ELM327 Reader</PluginDescription>
   <PluginType>PLUGIN_INPUT</PluginType>
   <PluginVersion>0</PluginVersion>
-  <ConnectorClass>kkdev.kksystem.plugins.odb2.elm372.KKPlugin</ConnectorClass>
-  <Enabled>false</Enabled>
+  <ConnectorClass>kkdev.kksystem.plugin.odb2.elm372.KKPlugin</ConnectorClass>
+  <TransmitPins>
+      <String>KKPIN_O_SELFTEST</String>
+  </TransmitPins>
+  <ReceivePins>
+      <String>KKPIN_I_SELFTEST</String>
+  </ReceivePins>
 </kkdev.kksystem.base.classes.PluginInfo>
