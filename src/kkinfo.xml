@@ -6,6 +6,7 @@ and open the template in the editor.
 -->
 
 <kkdev.kksystem.base.classes.PluginInfo>
+  <PluginUUID>44b5dab1-f596-458a-b09b-d9565b91464e</PluginUUID>
   <PluginName>KKODB2Reader</PluginName>
   <PluginDescription>ODB2 ELM327 Reader</PluginDescription>
   <PluginType>PLUGIN_INPUT</PluginType>
