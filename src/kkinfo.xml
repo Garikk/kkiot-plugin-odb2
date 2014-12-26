@@ -12,10 +12,11 @@ and open the template in the editor.
   <PluginType>PLUGIN_INPUT</PluginType>
   <PluginVersion>0</PluginVersion>
   <ConnectorClass>kkdev.kksystem.plugin.odb2.elm372.KKPlugin</ConnectorClass>
-  <TransmitPins>
-      <String>KKPIN_O_SELFTEST</String>
-  </TransmitPins>
-  <ReceivePins>
-      <String>KKPIN_I_SELFTEST</String>
+   <ReceivePins>
+    <string>KK_PIN_ODB2CMD</string>
   </ReceivePins>
+  <TransmitPins>
+    <string>KK_PIN_ODB2DATA</string>
+    <string>KK_PIN_PLUGINSTATE</string>
+  </TransmitPins>
 </kkdev.kksystem.base.classes.PluginInfo>
