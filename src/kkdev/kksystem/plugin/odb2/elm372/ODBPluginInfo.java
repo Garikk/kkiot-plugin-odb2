@@ -11,7 +11,7 @@ import kkdev.kksystem.base.constants.PluginConsts;
 
 /**
  *
- * @author blinov_is
+ * @author blinov_is e
  */
 public final class ODBPluginInfo  {
     public static PluginInfo GetPluginInfo()
