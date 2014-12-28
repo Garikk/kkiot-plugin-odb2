@@ -18,15 +18,10 @@ public class KKPlugin implements IPluginKKConnector   {
 
     IKKConnector Connector;
     
-        PluginInfo MyParameters;
-    
-    @Override
-    public void SetPluginInfo_FOR_DEBUG_(PluginInfo PI) {
-         MyParameters=PI;
-    }
+
     @Override
     public PluginInfo GetPluginInfo() {
-         return MyParameters;
+         return ODBPluginInfo.GetPluginInfo();
     }
 
     @Override
