@@ -31,19 +31,19 @@ public final class ODBPluginInfo  {
     
     private static String[] GetMyReceivePinInfo(){
     
-        String[] Ret=new String[1];
+        String[] Ret=new String[2];
     
-        //Ret[0]=PluginConsts.KK_PLUGIN_PIN_IN_DEF_SELFTEST;
-        Ret[0]=PluginConsts.KK_PLUGIN_PIN_S_DEF_SELFTEST;
+        Ret[0]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_TARGET_COMMAND;
+        Ret[1]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_TARGET_ODB2_COMMAND;
         
         return Ret;
     }
     private static String[] GetMyTransmitPinInfo(){
     
-        String[] Ret=new String[1];
+        String[] Ret=new String[2];
     
-        //Ret[0]=PluginConsts.KK_PLUGIN_PIN_IN_DEF_SELFTEST;
-        Ret[0]=PluginConsts.KK_PLUGIN_PIN_S_DEF_SELFTEST;
+        Ret[0]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_SOURCE_ODB2_DATA;
+        Ret[1]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_SOURCE_ODB2_RAW;
         
         return Ret;
     }
