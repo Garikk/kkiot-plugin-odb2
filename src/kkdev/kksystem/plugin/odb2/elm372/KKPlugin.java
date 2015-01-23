@@ -6,7 +6,7 @@
 package kkdev.kksystem.plugin.odb2.elm372;
 
 import kkdev.kksystem.base.classes.PluginInfo;
-import kkdev.kksystem.base.classes.PluginPin;
+import kkdev.kksystem.base.classes.PluginMessage;
 import kkdev.kksystem.base.interfaces.IKKConnector;
 import kkdev.kksystem.base.interfaces.IPluginKKConnector;
 
@@ -24,10 +24,6 @@ public class KKPlugin implements IPluginKKConnector   {
          return ODBPluginInfo.GetPluginInfo();
     }
 
-    @Override
-    public PluginPin[] GetPinsForRegister() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public void PluginInit(IKKConnector BaseConnector) {
@@ -45,10 +41,11 @@ public class KKPlugin implements IPluginKKConnector   {
     }
 
     @Override
-    public PluginPin ExecutePin(PluginPin Pin) {
+    public PluginMessage ExecutePin(PluginMessage Pin) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    
    
     
 }

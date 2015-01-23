@@ -5,26 +5,13 @@
  */
 package kkdev.kksystem.plugin.odb2.elm372;
 
-import kkdev.kksystem.base.classes.PluginPin;
+
 
 /**
  *
  * @author blinov_is
  */
 public class PluginPins {
-    public PluginPin[] GetAllMyPins()
-    {
-        PluginPin[] Ret=new PluginPin[1];
-        
-        return Ret;
-    }
+      
     
-    private PluginPin GetDefaultPins()
-    {
-            PluginPin PP;
-            PP=new PluginPin();
-            
-//            PP.PinName="SELF"
-    return null;
-    }
 }
