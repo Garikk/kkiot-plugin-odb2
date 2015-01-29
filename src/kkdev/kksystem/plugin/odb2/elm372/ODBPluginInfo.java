@@ -25,6 +25,7 @@ public final class ODBPluginInfo  {
         Ret.Enabled=true;
         Ret.ReceivePins = GetMyReceivePinInfo();
         Ret.TransmitPins = GetMyTransmitPinInfo();
+        Ret.PluginUUID="44b5dab1-f596-458a-b09b-d9565b91464e";
         return Ret;
     }
     
@@ -33,8 +34,8 @@ public final class ODBPluginInfo  {
     
         String[] Ret=new String[2];
     
-        Ret[0]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_TARGET_COMMAND;
-        Ret[1]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_TARGET_ODB2_COMMAND;
+        Ret[0]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_COMMAND;
+        Ret[1]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_ODB2_COMMAND;
         
         return Ret;
     }
@@ -42,8 +43,8 @@ public final class ODBPluginInfo  {
     
         String[] Ret=new String[2];
     
-        Ret[0]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_SOURCE_ODB2_DATA;
-        Ret[1]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_SOURCE_ODB2_RAW;
+        Ret[0]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_ODB2_DATA;
+        Ret[1]=PluginConsts.KK_PLUGIN_BASE_PLUGIN_DEF_PIN_ODB2_RAW;
         
         return Ret;
     }
