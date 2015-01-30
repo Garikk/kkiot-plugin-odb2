@@ -7,7 +7,7 @@ package kkdev.kksystem.plugin.odb2.elm372;
 
 import kkdev.kksystem.base.classes.PluginInfo;
 import kkdev.kksystem.base.classes.PluginMessage;
-import kkdev.kksystem.base.interfaces.IKKConnector;
+import kkdev.kksystem.base.interfaces.IPluginBaseInterface;
 import kkdev.kksystem.base.interfaces.IPluginKKConnector;
 
 /**     
@@ -16,7 +16,7 @@ import kkdev.kksystem.base.interfaces.IPluginKKConnector;
  */
 public class KKPlugin implements IPluginKKConnector   {
 
-    IKKConnector Connector;
+    IPluginBaseInterface Connector;
     
 
     @Override
@@ -26,7 +26,7 @@ public class KKPlugin implements IPluginKKConnector   {
 
 
     @Override
-    public void PluginInit(IKKConnector BaseConnector) {
+    public void PluginInit(IPluginBaseInterface BaseConnector) {
        Connector=BaseConnector;
     }
 
