@@ -7,5 +7,10 @@
             <file>file:/D:/PROGRAMMING/KK/KKBaseODB2/src/kkconnector</file>
             <file>file:/D:/PROGRAMMING/KK/KKBaseODB2/src/kkdev/kksystem/plugin/odb2/elm372/ODBPluginInfo.java</file>
         </group>
+        <group name="Plugins">
+            <file>file:/D:/PROGRAMMING/KK/KKBaseODB2/src/kkdev/kksystem/plugin/odb2/elm372/KKPlugin.java</file>
+            <file>file:/D:/PROGRAMMING/KK/KKBaseODB2/src/kkconnector</file>
+            <file>file:/D:/PROGRAMMING/KK/KKBaseODB2/src/kkdev/kksystem/plugin/odb2/elm372/ODBPluginInfo.java</file>
+        </group>
     </open-files>
 </project-private>
