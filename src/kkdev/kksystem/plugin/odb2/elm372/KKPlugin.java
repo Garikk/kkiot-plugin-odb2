@@ -32,12 +32,12 @@ public class KKPlugin implements IPluginKKConnector   {
 
     @Override
     public void PluginStart() {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      //not needed in this plugin
     }
 
     @Override
     public void PluginStop() {
-      //  throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //not needed in this plugin
     }
 
     @Override
