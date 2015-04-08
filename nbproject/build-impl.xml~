@@ -43,7 +43,7 @@ is divided into following sections:
         <property file="nbproject/private/private.properties"/>
     </target>
     <target name="-pre-init-libraries">
-        <property location="../kkbuild/lib" name="libraries.path"/>
+        <property location="../kkbuild/lib\nblibraries.properties" name="libraries.path"/>
         <dirname file="${libraries.path}" property="libraries.dir.nativedirsep"/>
         <pathconvert dirsep="/" property="libraries.dir">
             <path path="${libraries.dir.nativedirsep}"/>
@@ -60,12 +60,6 @@ is divided into following sections:
         </loadproperties>
     </target>
     <target depends="-pre-init,-init-private,-init-private-libraries" name="-init-libraries">
-        <loadproperties encoding="ISO-8859-1" srcfile="${libraries.path}">
-            <filterchain>
-                <replacestring from="$${base}" to="${libraries.dir}"/>
-                <escapeunicode/>
-            </filterchain>
-        </loadproperties>
     </target>
     <target depends="-pre-init,-init-private,-init-libraries" name="-init-user">
         <property file="${user.properties.file}"/>
