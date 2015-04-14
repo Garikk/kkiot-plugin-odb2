@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/blinov_is/Documents/NetBeansProjects/kkcar-plugin-odb2/src/kkdev/kksystem/plugin/odb2/elm372/ODBPluginInfo.java</file>
-            <file>file:/C:/Users/blinov_is/Documents/NetBeansProjects/kkcar-plugin-odb2/src/kkdev/kksystem/plugin/odb2/elm372/KKPlugin.java</file>
+            <file>file:/C:/Users/blinov_is/Documents/NetBeansProjects/kkcar-plugin-odb2/src/kkconnector</file>
+            <file>file:/C:/Users/blinov_is/Documents/NetBeansProjects/kkcar-plugin-odb2/src/kkdev/kksystem/plugin/odb2_dummy/KKPlugin.java</file>
+            <file>file:/C:/Users/blinov_is/Documents/NetBeansProjects/kkcar-plugin-odb2/src/kkdev/kksysten/plugin/odb2/manager/ODB2Manager.java</file>
+            <file>file:/C:/Users/blinov_is/Documents/NetBeansProjects/kkcar-plugin-odb2/src/kkdev/kksystem/plugin/odb2_dummy/ODBPluginInfo.java</file>
         </group>
     </open-files>
 </project-private>
