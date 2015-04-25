@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import kkdev.kksystem.base.constants.SystemConsts;
 
 
+
 /**
  *
  * @author blinov_is
@@ -48,7 +49,7 @@ public abstract class SettingsManager {
        try {
            Gson gson=new Gson();
            BufferedReader br = new BufferedReader(  
-                 new FileReader(SystemConsts.KK_BASE_CONFPATH + "/"+ODB_CONF));  
+                 new FileReader(SystemConsts.KK_BASE_FORPLUGINS_CONFPATH + "/"+ODB_CONF));  
 
            MainConfiguration = (ODB2Config)gson.fromJson(br, ODB2Config.class);
            
