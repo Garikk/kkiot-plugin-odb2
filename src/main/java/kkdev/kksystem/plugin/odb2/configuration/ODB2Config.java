@@ -11,7 +11,8 @@ package kkdev.kksystem.plugin.odb2.configuration;
  */
 public class ODB2Config {
     public enum AdapterTypes {
-        ELM327_RS232
+        ELM327_RS232,
+        ODB2_Emulator
     }
     
     public AdapterTypes ODBAdapter;

@@ -5,10 +5,15 @@
  */
 package kkdev.kksystem.plugin.odb2.adapters;
 
+import kkdev.kksystem.base.classes.odb2.PinOdb2Data_ExtendedMonitoringInfo;
+import kkdev.kksystem.base.classes.odb2.PinOdb2Data_SimpleMonitoringInfo;
+
 /**
  *
  * @author blinov_is
  */
 public interface IODB2Adapter {
+    public PinOdb2Data_SimpleMonitoringInfo GetSimpleDiag();
+    public PinOdb2Data_ExtendedMonitoringInfo GetExtendedDiag(int[] REQ_PID);
     
 }
