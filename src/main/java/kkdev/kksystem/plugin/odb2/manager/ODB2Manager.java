@@ -1,9 +1,16 @@
 package kkdev.kksystem.plugin.odb2.manager;
 
+import kkdev.kksystem.base.classes.PluginMessage;
+import kkdev.kksystem.base.classes.display.PinLedCommand;
 import kkdev.kksystem.base.classes.odb2.ODBConstants;
 import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATAPACKET;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Command;
+import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
+import kkdev.kksystem.base.classes.odb2.PinOdb2Data;
 import kkdev.kksystem.base.constants.PluginConsts;
+import static kkdev.kksystem.base.constants.PluginConsts.KK_PLUGIN_BASE_LED_COMMAND;
+import static kkdev.kksystem.base.constants.PluginConsts.KK_PLUGIN_BASE_ODB2_DATA;
+import kkdev.kksystem.plugin.odb2.KKPlugin;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 import kkdev.kksystem.plugin.odb2.adapters.elm327.ELM327HW;
 import kkdev.kksystem.plugin.odb2.adapters.odb2emulator.ODB2EMULATOR;
@@ -20,16 +27,20 @@ import kkdev.kksystem.plugin.odb2.configuration.SettingsManager;
  * @author blinov_is
  */
 public abstract class ODB2Manager {
-
+    static KKPlugin Connector;
     static IODB2Adapter ODBAdapter;
 
-    public static void InitODB2() {
+
+    public static void InitODB2(KKPlugin PConnector) {
+        Connector=PConnector;
         System.out.println("[ODB2][INIT] ODB adapter initialising");
         System.out.println("[ODB2][CONFIG] Load configuration");
         SettingsManager.InitConfig();
         System.out.println("[ODB2][CONFIG] Connect adapters");
         InitAdapters();
     }
+    
+    
 
     private static void InitAdapters() {
         if (SettingsManager.MainConfiguration.ODBAdapter == ODB2Config.AdapterTypes.ELM327_RS232) {
@@ -41,9 +52,9 @@ public abstract class ODB2Manager {
     }
 
     public static void ReceivePin(String PinName, Object PinData) {
-
+ System.out.println("[DEBUG][ODB2][PROCREC] " + PinName);
         switch (PinName) {
-            case PluginConsts.KK_PLUGIN_BASE_PIN_ODB2_COMMAND:
+            case PluginConsts.KK_PLUGIN_BASE_ODB2_COMMAND:
                 PinOdb2Command CMD;
                 CMD = (PinOdb2Command) PinData;
                 ProcessCommand(CMD);
@@ -52,17 +63,18 @@ public abstract class ODB2Manager {
     }
 
     private static void ProcessCommand(PinOdb2Command CMD) {
+        System.out.println("[DEBUG][ODB2][PROCCMD] " + CMD.Command);
         switch (CMD.Command) {
-            case ODB_KKSYS_CONNECT:    //connect to car diag system
+            case ODB_KKSYS_ADAPTER_CONNECT:    //connect to car diag system
                 ConnectToCar(CMD);
                 break;
-            case ODB_KKSYS_DISCONNECT:    //connect to car diag system
+            case ODB_KKSYS_ADAPTER_DISCONNECT:    //connect to car diag system
                 DisconnectFromCar(CMD);
                 break;
-            case ODB_KKSYS_GETINFO:   //request pid info
+            case ODB_KKSYS_CAR_GETINFO:   //request pid info
                 RequestInfo(CMD);
                 break;
-            case ODB_KKSYS_EXEC_COMMAND:   //Exec ODB command
+            case ODB_KKSYS_CAR_EXEC_COMMAND:   //Exec ODB command
                 ExecCommand(CMD);
                 break;
         }
@@ -70,6 +82,19 @@ public abstract class ODB2Manager {
     }
 
     private static void ConnectToCar(PinOdb2Command CMD) {
+        
+        PluginMessage Msg = new PluginMessage();
+        Msg.PinName = KK_PLUGIN_BASE_ODB2_DATA;
+        //
+        PinOdb2Data PData = new PinOdb2Data();
+        PData.DataType=ODBConstants.KK_ODB_DATATYPE.ODB_BASE_CONNECTOR;
+        PData.AdapterInfo=new PinOdb2ConnectorInfo();
+        PData.AdapterInfo.OdbAdapterConnected=true; //Dummy
+        
+         Msg.PinData=PData;
+        //Msg.PinData = PData;
+        //
+        Connector.TransmitPinMessage(Msg);
     }
 
     private static void DisconnectFromCar(PinOdb2Command CMD) {

@@ -38,7 +38,7 @@ public final class ODBPluginInfo  {
     
 
         Ret[0]=PluginConsts.KK_PLUGIN_BASE_PIN_COMMAND;
-        Ret[1]=PluginConsts.KK_PLUGIN_BASE_PIN_ODB2_COMMAND;
+        Ret[1]=PluginConsts.KK_PLUGIN_BASE_ODB2_COMMAND;
 
         
         return Ret;
@@ -48,8 +48,8 @@ public final class ODBPluginInfo  {
         String[] Ret=new String[2];
     
 
-        Ret[0]=PluginConsts.KK_PLUGIN_BASE_PIN_ODB2_DATA;
-        Ret[1]=PluginConsts.KK_PLUGIN_BASE_PIN_ODB2_RAW;
+        Ret[0]=PluginConsts.KK_PLUGIN_BASE_ODB2_DATA;
+        Ret[1]=PluginConsts.KK_PLUGIN_BASE_ODB2_RAW;
 
         
         return Ret;

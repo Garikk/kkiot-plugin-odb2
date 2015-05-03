@@ -5,37 +5,39 @@ package kkdev.kksystem.plugin.odb2;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
-
 import kkdev.kksystem.base.classes.PluginInfo;
 import kkdev.kksystem.base.classes.PluginMessage;
 import kkdev.kksystem.base.interfaces.IPluginBaseInterface;
 import kkdev.kksystem.base.interfaces.IPluginKKConnector;
 import kkdev.kksystem.plugin.odb2.manager.ODB2Manager;
 
-/**     
+/**
  *
  * @author blinov_is
  */
-public class KKPlugin implements IPluginKKConnector   {
+public final class KKPlugin implements IPluginKKConnector {
 
     IPluginBaseInterface Connector;
+    String MyUID;
+
+    public KKPlugin() {
+        MyUID = GetPluginInfo().PluginUUID;
+    }
 
     @Override
     public PluginInfo GetPluginInfo() {
-         return ODBPluginInfo.GetPluginInfo();
+        return ODBPluginInfo.GetPluginInfo();
     }
-
 
     @Override
     public void PluginInit(IPluginBaseInterface BaseConnector) {
-       Connector=BaseConnector;
-       ODB2Manager.InitODB2();
+        Connector = BaseConnector;
+        ODB2Manager.InitODB2(this);
     }
 
     @Override
     public void PluginStart() {
-      //not needed in this plugin
+        //not needed in this plugin
     }
 
     @Override
@@ -49,8 +51,9 @@ public class KKPlugin implements IPluginKKConnector   {
         return null;
     }
 
-    
-   
-    
-}
+    public void TransmitPinMessage(PluginMessage Pin) {
+        Pin.SenderUID = MyUID;
+        Connector.ExecutePinCommand(Pin);
+    }
 
+}
