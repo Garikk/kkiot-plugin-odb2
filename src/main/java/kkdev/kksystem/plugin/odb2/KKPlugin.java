@@ -47,7 +47,7 @@ public final class KKPlugin implements IPluginKKConnector {
 
     @Override
     public PluginMessage ExecutePin(PluginMessage Pin) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       ODB2Manager.ReceivePin(Pin.PinName, Pin.PinData);
         return null;
     }
 
