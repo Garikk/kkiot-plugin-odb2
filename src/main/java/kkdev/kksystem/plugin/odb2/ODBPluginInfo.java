@@ -8,7 +8,7 @@ package kkdev.kksystem.plugin.odb2;
 
 
 import kkdev.kksystem.base.constants.PluginConsts.KK_PLUGIN_TYPE;
-import kkdev.kksystem.base.classes.PluginInfo;
+import kkdev.kksystem.base.classes.plugins.PluginInfo;
 import kkdev.kksystem.base.constants.PluginConsts;
 
 /**

@@ -5,8 +5,8 @@ package kkdev.kksystem.plugin.odb2;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-import kkdev.kksystem.base.classes.PluginInfo;
-import kkdev.kksystem.base.classes.PluginMessage;
+import kkdev.kksystem.base.classes.plugins.PluginInfo;
+import kkdev.kksystem.base.classes.plugins.PluginMessage;
 import kkdev.kksystem.base.interfaces.IPluginBaseInterface;
 import kkdev.kksystem.base.interfaces.IPluginKKConnector;
 import kkdev.kksystem.plugin.odb2.manager.ODB2Manager;
