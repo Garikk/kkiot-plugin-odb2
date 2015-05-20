@@ -9,14 +9,16 @@ package kkdev.kksystem.plugin.odb2;
 
 import kkdev.kksystem.base.constants.PluginConsts.KK_PLUGIN_TYPE;
 import kkdev.kksystem.base.classes.plugins.PluginInfo;
+import kkdev.kksystem.base.classes.plugins.simple.IPluginInfoRequest;
 import kkdev.kksystem.base.constants.PluginConsts;
 
 /**
  *
  * @author blinov_is e
  */
-public final class ODBPluginInfo  {
-    public static PluginInfo GetPluginInfo()
+public class ODBPluginInfo  implements IPluginInfoRequest {
+    @Override
+    public PluginInfo GetPluginInfo()
     {
         PluginInfo Ret=new PluginInfo();
         
@@ -32,7 +34,7 @@ public final class ODBPluginInfo  {
     }
     
     
-    private static String[] GetMyReceivePinInfo(){
+    private String[] GetMyReceivePinInfo(){
     
         String[] Ret=new String[2];
     
@@ -43,7 +45,7 @@ public final class ODBPluginInfo  {
         
         return Ret;
     }
-    private static String[] GetMyTransmitPinInfo(){
+    private String[] GetMyTransmitPinInfo(){
     
         String[] Ret=new String[2];
     
