@@ -4,6 +4,7 @@ import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATAPACKET;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Command;
 import kkdev.kksystem.base.classes.plugins.simple.PluginManagerODB;
 import kkdev.kksystem.base.constants.PluginConsts;
+import static kkdev.kksystem.base.constants.SystemConsts.KK_BASE_FEATURES_ODB_DIAG_UID;
 import kkdev.kksystem.plugin.odb2.KKPlugin;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 import kkdev.kksystem.plugin.odb2.adapters.elm327.ELM327HW;
@@ -23,6 +24,7 @@ import kkdev.kksystem.plugin.odb2.configuration.PluginSettings;
 public class ODB2Manager extends PluginManagerODB {
 
     static IODB2Adapter ODBAdapter;
+    final static String CurrentFeature=KK_BASE_FEATURES_ODB_DIAG_UID;
 
 
     public void InitODB2(KKPlugin PConnector) {
@@ -58,7 +60,7 @@ public class ODB2Manager extends PluginManagerODB {
         System.out.println("[DEBUG][ODB2][PROCCMD] " + CMD.Command);
         switch (CMD.Command) {
             case ODB_KKSYS_ADAPTER_CONNECT:    //connect to car diag system
-                ODB_ConnectToCarState(CMD,true); //temp
+                ODB_ConnectToCarState(CurrentFeature,CMD,true); //temp
                 break;
             case ODB_KKSYS_ADAPTER_DISCONNECT:    //connect to car diag system
                 break;
