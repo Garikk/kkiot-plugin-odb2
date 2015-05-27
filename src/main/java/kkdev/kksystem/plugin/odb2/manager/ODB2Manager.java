@@ -2,7 +2,7 @@ package kkdev.kksystem.plugin.odb2.manager;
 
 import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATAPACKET;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Command;
-import kkdev.kksystem.base.classes.plugins.simple.PluginManagerODB;
+import kkdev.kksystem.base.classes.plugins.simple.managers.PluginManagerODB;
 import kkdev.kksystem.base.constants.PluginConsts;
 import static kkdev.kksystem.base.constants.SystemConsts.KK_BASE_FEATURES_ODB_DIAG_UID;
 import kkdev.kksystem.plugin.odb2.KKPlugin;
