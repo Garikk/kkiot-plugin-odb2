@@ -40,7 +40,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     Random R;
 
     @Override
-    public PinOdb2Data_SimpleMonitoringInfo GetSimpleDiag() {
+    public PinOdb2Data_SimpleMonitoringInfo GetSimpleInfo() {
         PinOdb2Data_SimpleMonitoringInfo Ret;
 
         Ret = new PinOdb2Data_SimpleMonitoringInfo();
@@ -76,7 +76,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     }
 
     @Override
-    public PinOdb2Data_ExtendedMonitoringInfo GetExtendedDiag(int[] REQ_PID) {
+    public PinOdb2Data_ExtendedMonitoringInfo GetExtendedInfo(int[] REQ_PID) {
         return null;
     }
 

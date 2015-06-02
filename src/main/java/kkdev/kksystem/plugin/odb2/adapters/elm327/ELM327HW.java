@@ -16,12 +16,12 @@ import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 public class ELM327HW implements IODB2Adapter {
 
     @Override
-    public PinOdb2Data_SimpleMonitoringInfo GetSimpleDiag() {
+    public PinOdb2Data_SimpleMonitoringInfo GetSimpleInfo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public PinOdb2Data_ExtendedMonitoringInfo GetExtendedDiag(int[] REQ_PID) {
+    public PinOdb2Data_ExtendedMonitoringInfo GetExtendedInfo(int[] REQ_PID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

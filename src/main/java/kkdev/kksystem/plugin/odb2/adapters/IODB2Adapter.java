@@ -13,7 +13,7 @@ import kkdev.kksystem.base.classes.odb2.PinOdb2Data_SimpleMonitoringInfo;
  * @author blinov_is
  */
 public interface IODB2Adapter {
-    public PinOdb2Data_SimpleMonitoringInfo GetSimpleDiag();
-    public PinOdb2Data_ExtendedMonitoringInfo GetExtendedDiag(int[] REQ_PID);
+    public PinOdb2Data_SimpleMonitoringInfo GetSimpleInfo();
+    public PinOdb2Data_ExtendedMonitoringInfo GetExtendedInfo(int[] REQ_PID);
     
 }
