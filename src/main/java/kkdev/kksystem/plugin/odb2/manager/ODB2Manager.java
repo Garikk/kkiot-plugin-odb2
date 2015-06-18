@@ -24,8 +24,6 @@ import kkdev.kksystem.plugin.odb2.configuration.PluginSettings;
 public class ODB2Manager extends PluginManagerODB {
 
     static IODB2Adapter ODBAdapter;
-    final static String CurrentFeature=KK_BASE_FEATURES_ODB_DIAG_UID;
-
 
     public void InitODB2(KKPlugin PConnector) {
         Connector=PConnector;
