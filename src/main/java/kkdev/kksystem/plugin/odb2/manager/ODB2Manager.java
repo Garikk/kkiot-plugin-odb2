@@ -1,10 +1,12 @@
 package kkdev.kksystem.plugin.odb2.manager;
 
+import kkdev.kksystem.base.classes.base.PinBaseCommand;
 import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATAPACKET;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Command;
 import kkdev.kksystem.base.classes.plugins.simple.managers.PluginManagerODB;
 import kkdev.kksystem.base.constants.PluginConsts;
 import static kkdev.kksystem.base.constants.SystemConsts.KK_BASE_FEATURES_ODB_DIAG_UID;
+import static kkdev.kksystem.base.constants.SystemConsts.KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID;
 import kkdev.kksystem.plugin.odb2.KKPlugin;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 import kkdev.kksystem.plugin.odb2.adapters.elm327.ELM327HW;
@@ -26,6 +28,7 @@ public class ODB2Manager extends PluginManagerODB {
     static IODB2Adapter ODBAdapter;
 
     public void InitODB2(KKPlugin PConnector) {
+        CurrentFeature=KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID;
         Connector=PConnector;
         System.out.println("[ODB2][INIT] ODB adapter initialising");
         System.out.println("[ODB2][CONFIG] Load configuration");
@@ -50,12 +53,14 @@ public class ODB2Manager extends PluginManagerODB {
                 CMD = (PinOdb2Command) PinData;
                 ProcessCommand(CMD);
                 break;
+            case PluginConsts.KK_PLUGIN_BASE_PIN_COMMAND:
+                //This plugin is not use changes of currentfeature
+                break;
         }
 
     }
 
     private void ProcessCommand(PinOdb2Command CMD) {
-        System.out.println("[DEBUG][ODB2][PROCCMD] " + CMD.Command);
         switch (CMD.Command) {
             case ODB_KKSYS_ADAPTER_CONNECT:    //connect to car diag system
                 ODB_ConnectToCarState(CurrentFeature,CMD,true); //temp
