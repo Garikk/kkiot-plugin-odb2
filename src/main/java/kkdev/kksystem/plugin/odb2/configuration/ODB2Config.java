@@ -17,5 +17,6 @@ public class ODB2Config {
     
     public AdapterTypes ODBAdapter;
     public String RS232ConnectPort;
+    public int RS232Speed;
     public boolean RS232AutoFind;
 }

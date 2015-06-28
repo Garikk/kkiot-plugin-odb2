@@ -6,6 +6,7 @@
 package kkdev.kksystem.plugin.odb2.adapters.odb2emulator;
 
 import java.util.Random;
+import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Data_ExtendedMonitoringInfo;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Data_SimpleMonitoringInfo;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
@@ -78,6 +79,26 @@ public class ODB2EMULATOR implements IODB2Adapter {
     @Override
     public PinOdb2Data_ExtendedMonitoringInfo GetExtendedInfo(int[] REQ_PID) {
         return null;
+    }
+
+    @Override
+    public PinOdb2ConnectorInfo ConnectToVehicle() {
+        PinOdb2ConnectorInfo Ret;
+        Ret=new PinOdb2ConnectorInfo();
+        Ret.OdbAdapterState=PinOdb2ConnectorInfo.ODB_State.ODB_CONNECTOR_READY;
+        Ret.OdbAdapterDescripton="Debug adapter";
+        return Ret;
+                
+       
+    }
+
+    @Override
+    public PinOdb2ConnectorInfo CheckState() {
+        PinOdb2ConnectorInfo Ret;
+        Ret=new PinOdb2ConnectorInfo();
+        Ret.OdbAdapterState=PinOdb2ConnectorInfo.ODB_State.ODB_CONNECTOR_READY;
+        Ret.OdbAdapterDescripton="Debug adapter";
+        return Ret;
     }
 
 }
