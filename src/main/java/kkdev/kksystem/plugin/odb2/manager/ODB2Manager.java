@@ -40,7 +40,7 @@ public class ODB2Manager extends PluginManagerODB {
     private void InitAdapters() {
         if (PluginSettings.MainConfiguration.ODBAdapter == ODB2Config.AdapterTypes.ELM327_RS232) {
             ODBAdapter = new ELM327HW();
-        } else if (ODB2Config.AdapterTypes.ODB2_Emulator == PluginSettings.MainConfiguration.ODBAdapter) {
+        } else if (PluginSettings.MainConfiguration.ODBAdapter==ODB2Config.AdapterTypes.ODB2_Emulator) {
             ODBAdapter = new ODB2EMULATOR();
         }
     }
@@ -63,7 +63,8 @@ public class ODB2Manager extends PluginManagerODB {
     private void ProcessCommand(PinOdb2Command CMD) {
         switch (CMD.Command) {
             case ODB_KKSYS_ADAPTER_CONNECT:    //connect to car diag system
-                ODB_ConnectToCarState(CurrentFeature,CMD,true); //temp
+                ConnectToCar();
+                //ODB_ConnectToCarState(CurrentFeature,CMD,true); //temp
                 break;
             case ODB_KKSYS_ADAPTER_DISCONNECT:    //connect to car diag system
                 break;
@@ -80,5 +81,13 @@ public class ODB2Manager extends PluginManagerODB {
         {
         
         }
+    }
+    
+    //
+    //Adapter operations
+    //
+    private void ConnectToCar()
+    {
+    
     }
 }
