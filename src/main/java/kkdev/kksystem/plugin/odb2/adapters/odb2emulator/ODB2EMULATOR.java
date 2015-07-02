@@ -6,9 +6,8 @@
 package kkdev.kksystem.plugin.odb2.adapters.odb2emulator;
 
 import java.util.Random;
+import kkdev.kksystem.base.classes.odb2.ODB2Data;
 import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
-import kkdev.kksystem.base.classes.odb2.PinOdb2Data_ExtendedMonitoringInfo;
-import kkdev.kksystem.base.classes.odb2.PinOdb2Data_SimpleMonitoringInfo;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 
 /**
@@ -41,16 +40,17 @@ public class ODB2EMULATOR implements IODB2Adapter {
     Random R;
 
     @Override
-    public PinOdb2Data_SimpleMonitoringInfo GetSimpleInfo() {
-        PinOdb2Data_SimpleMonitoringInfo Ret;
+    public ODB2Data GetSimpleInfo() {
+        ODB2Data Ret;
 
-        Ret = new PinOdb2Data_SimpleMonitoringInfo();
-
+        Ret = new ODB2Data();
+/*
         Ret.PID_CAR_Speed = SPEED_VAL;
         Ret.PID_DIAG_MIL_State = true;
         Ret.PID_ELECTRIC_Voltage = VOLTAGE_VAL;
         Ret.PID_ENGINE_EngineRPM = RPM_VAL;
         Ret.PID_ENGINE_EngineTemp = TEMP_VAL;
+        */
         //
         if (R.nextInt(1) == 1) {
             RPM_STEP = -RPM_STEP;
@@ -77,7 +77,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     }
 
     @Override
-    public PinOdb2Data_ExtendedMonitoringInfo GetExtendedInfo(int[] REQ_PID) {
+    public ODB2Data GetExtendedInfo(int[] REQ_PID) {
         return null;
     }
 

@@ -5,9 +5,8 @@
  */
 package kkdev.kksystem.plugin.odb2.adapters.elm327;
 
+import kkdev.kksystem.base.classes.odb2.ODB2Data;
 import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
-import kkdev.kksystem.base.classes.odb2.PinOdb2Data_ExtendedMonitoringInfo;
-import kkdev.kksystem.base.classes.odb2.PinOdb2Data_SimpleMonitoringInfo;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 
 /**
@@ -17,12 +16,12 @@ import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 public class ELM327HW implements IODB2Adapter {
     PinOdb2ConnectorInfo CurrentState;
     @Override
-    public PinOdb2Data_SimpleMonitoringInfo GetSimpleInfo() {
+    public ODB2Data GetSimpleInfo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public PinOdb2Data_ExtendedMonitoringInfo GetExtendedInfo(int[] REQ_PID) {
+    public ODB2Data GetExtendedInfo(int[] REQ_PID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
