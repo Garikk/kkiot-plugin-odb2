@@ -14,8 +14,8 @@ import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
  * @author blinov_is
  */
 public interface IODB2Adapter {
-    public PinOdb2ConnectorInfo ConnectToVehicle();
-    public PinOdb2ConnectorInfo CheckState();
+    public void ConnectToVehicle();
+    public void CheckState();
     
     public ODB2Data GetSimpleInfo();
     public ODB2Data GetExtendedInfo(int[] REQ_PID);

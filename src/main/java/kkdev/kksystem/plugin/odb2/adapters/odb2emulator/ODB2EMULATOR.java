@@ -8,6 +8,8 @@ package kkdev.kksystem.plugin.odb2.adapters.odb2emulator;
 import java.util.Random;
 import kkdev.kksystem.base.classes.odb2.ODB2Data;
 import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
+import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo.ODB_State;
+import kkdev.kksystem.plugin.odb2.Global;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 
 /**
@@ -82,23 +84,20 @@ public class ODB2EMULATOR implements IODB2Adapter {
     }
 
     @Override
-    public PinOdb2ConnectorInfo ConnectToVehicle() {
-        PinOdb2ConnectorInfo Ret;
-        Ret=new PinOdb2ConnectorInfo();
-        Ret.OdbAdapterState=PinOdb2ConnectorInfo.ODB_State.ODB_CONNECTOR_READY;
-        Ret.OdbAdapterDescripton="Debug adapter";
-        return Ret;
-                
+    public void ConnectToVehicle() {
+        
+        Global.PM.ODB_SendConnectionState(Global.PM.CurrentFeature,ODB_State.ODB_CONNECTOR_READY,"Debug Ok");      
        
     }
 
     @Override
-    public PinOdb2ConnectorInfo CheckState() {
+    public void CheckState() {
         PinOdb2ConnectorInfo Ret;
         Ret=new PinOdb2ConnectorInfo();
         Ret.OdbAdapterState=PinOdb2ConnectorInfo.ODB_State.ODB_CONNECTOR_READY;
         Ret.OdbAdapterDescripton="Debug adapter";
-        return Ret;
+        //
+        Global.PM.ODB_SendConnectionState(Global.PM.CurrentFeature,ODB_State.ODB_CONNECTOR_READY,"Debug Ok");
     }
 
 }

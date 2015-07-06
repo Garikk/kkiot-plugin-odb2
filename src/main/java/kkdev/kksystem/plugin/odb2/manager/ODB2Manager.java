@@ -1,11 +1,9 @@
 package kkdev.kksystem.plugin.odb2.manager;
 
-import kkdev.kksystem.base.classes.base.PinBaseCommand;
 import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATAPACKET;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Command;
 import kkdev.kksystem.base.classes.plugins.simple.managers.PluginManagerODB;
 import kkdev.kksystem.base.constants.PluginConsts;
-import static kkdev.kksystem.base.constants.SystemConsts.KK_BASE_FEATURES_ODB_DIAG_UID;
 import static kkdev.kksystem.base.constants.SystemConsts.KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID;
 import kkdev.kksystem.plugin.odb2.KKPlugin;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
@@ -30,10 +28,9 @@ public class ODB2Manager extends PluginManagerODB {
     public void InitODB2(KKPlugin PConnector) {
         CurrentFeature=KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID;
         Connector=PConnector;
-        System.out.println("[ODB2][INIT] ODB adapter initialising");
-        System.out.println("[ODB2][CONFIG] Load configuration");
+        //
         PluginSettings.InitConfig();
-        System.out.println("[ODB2][CONFIG] Connect adapters");
+        //
         InitAdapters();
     }
     
@@ -46,7 +43,7 @@ public class ODB2Manager extends PluginManagerODB {
     }
 
     public void ReceivePin(String PinName, Object PinData) {
-        System.out.println("[DEBUG][ODB2][PROCREC] " + PinName);
+
         switch (PinName) {
             case PluginConsts.KK_PLUGIN_BASE_ODB2_COMMAND:
                 PinOdb2Command CMD;
@@ -64,7 +61,6 @@ public class ODB2Manager extends PluginManagerODB {
         switch (CMD.Command) {
             case ODB_KKSYS_ADAPTER_CONNECT:    //connect to car diag system
                 ConnectToCar();
-                //ODB_ConnectToCarState(CurrentFeature,CMD,true); //temp
                 break;
             case ODB_KKSYS_ADAPTER_DISCONNECT:    //connect to car diag system
                 break;
@@ -88,6 +84,6 @@ public class ODB2Manager extends PluginManagerODB {
     //
     private void ConnectToCar()
     {
-    
+        ODBAdapter.ConnectToVehicle();
     }
 }

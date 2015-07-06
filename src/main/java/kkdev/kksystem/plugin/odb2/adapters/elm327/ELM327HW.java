@@ -26,13 +26,13 @@ public class ELM327HW implements IODB2Adapter {
     }
 
     @Override
-    public PinOdb2ConnectorInfo ConnectToVehicle() {
+    public void ConnectToVehicle() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public PinOdb2ConnectorInfo CheckState() {
-        return CurrentState;
+    public void CheckState() {
+     //   return CurrentState;
     }
     
 }
