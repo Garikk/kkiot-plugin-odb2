@@ -75,7 +75,7 @@ public class ODB2Manager extends PluginManagerODB {
     private void RequestInfo(PinOdb2Command CMD) {
         if (CMD.CommandData==KK_ODB_DATAPACKET.ODB_PIDDATA)
         {
-        
+            ODBAdapter.RequestODBInfo(CMD.RequestPIDs);
         }
     }
     

@@ -5,7 +5,10 @@
  */
 package kkdev.kksystem.plugin.odb2.adapters.odb2emulator;
 
+import java.util.Map;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import kkdev.kksystem.base.classes.odb2.ODB2Data;
 import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
 import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo.ODB_State;
@@ -19,7 +22,9 @@ import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 public class ODB2EMULATOR implements IODB2Adapter {
 
     //
-
+    boolean Running=false;
+    Map<Integer,Integer> RequestPIDCounter;
+    
     double TEMP_MAX = 130;
     double TEMP_MIN = 0;
     double SPEED_MAX = 200;
@@ -40,20 +45,14 @@ public class ODB2EMULATOR implements IODB2Adapter {
     double OTH_STEP = 4;
     //
     Random R;
+    Timer tmrODBEmulator;
 
-    @Override
-    public ODB2Data GetSimpleInfo() {
+
+    public void GetSimpleInfo() {
         ODB2Data Ret;
-
+        
         Ret = new ODB2Data();
-/*
-        Ret.PID_CAR_Speed = SPEED_VAL;
-        Ret.PID_DIAG_MIL_State = true;
-        Ret.PID_ELECTRIC_Voltage = VOLTAGE_VAL;
-        Ret.PID_ENGINE_EngineRPM = RPM_VAL;
-        Ret.PID_ENGINE_EngineTemp = TEMP_VAL;
-        */
-        //
+
         if (R.nextInt(1) == 1) {
             RPM_STEP = -RPM_STEP;
             VOLT_STEP = -VOLT_STEP;
@@ -75,13 +74,15 @@ public class ODB2EMULATOR implements IODB2Adapter {
         }
         TEMP_VAL = TEMP_VAL + VOLT_STEP;
         //
-        return Ret;
+        
     }
 
-    @Override
-    public ODB2Data GetExtendedInfo(int[] REQ_PID) {
-        return null;
-    }
+    private final TimerTask TTask = new TimerTask() {
+        @Override
+        public void run() {
+            SendODBData();
+        }
+    };
 
     @Override
     public void ConnectToVehicle() {
@@ -99,5 +100,34 @@ public class ODB2EMULATOR implements IODB2Adapter {
         //
         Global.PM.ODB_SendConnectionState(Global.PM.CurrentFeature,ODB_State.ODB_CONNECTOR_READY,"Debug Ok");
     }
+
+    @Override
+    public void RequestODBInfo(int[] REQ_PID) {
+        
+       for (int i:REQ_PID)
+       {
+           if (RequestPIDCounter.containsKey(i)){
+               int t = RequestPIDCounter.get(i);//=RequestPIDCounter.get(i)+1;
+               RequestPIDCounter.put(i, t+1);
+           }
+           else
+           {
+               RequestPIDCounter.put(i, 1);
+           }
+       }
+       
+       if (!Running)
+           tmrODBEmulator.schedule(TTask,1000,1000);
+       
+       Running=true;
+    }
+    
+    private void SendODBData()
+    {
+        
+        
+      //  Global.PM.ODB_SendODBInfo(Global.PM.CurrentFeature, Dat);
+    }
+
 
 }

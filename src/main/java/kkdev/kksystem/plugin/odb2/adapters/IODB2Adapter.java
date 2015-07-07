@@ -17,7 +17,6 @@ public interface IODB2Adapter {
     public void ConnectToVehicle();
     public void CheckState();
     
-    public ODB2Data GetSimpleInfo();
-    public ODB2Data GetExtendedInfo(int[] REQ_PID);
+    public void RequestODBInfo(int[] REQ_PID);
     
 }
