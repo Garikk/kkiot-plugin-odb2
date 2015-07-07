@@ -15,15 +15,6 @@ import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
  */
 public class ELM327HW implements IODB2Adapter {
     PinOdb2ConnectorInfo CurrentState;
-    @Override
-    public ODB2Data GetSimpleInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public ODB2Data GetExtendedInfo(int[] REQ_PID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
     @Override
     public void ConnectToVehicle() {
@@ -33,6 +24,11 @@ public class ELM327HW implements IODB2Adapter {
     @Override
     public void CheckState() {
      //   return CurrentState;
+    }
+
+    @Override
+    public void RequestODBInfo(int[] REQ_PID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

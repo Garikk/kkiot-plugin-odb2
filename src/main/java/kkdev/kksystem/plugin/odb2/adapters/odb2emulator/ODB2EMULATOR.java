@@ -74,7 +74,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
         }
         TEMP_VAL = TEMP_VAL + VOLT_STEP;
         //
-        
+       // Ret.AddPID(RPM_VAL, RPM_VAL);
     }
 
     private final TimerTask TTask = new TimerTask() {
