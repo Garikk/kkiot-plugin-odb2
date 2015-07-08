@@ -5,6 +5,7 @@
  */
 package kkdev.kksystem.plugin.odb2.adapters.odb2emulator;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
@@ -23,8 +24,8 @@ public class ODB2EMULATOR implements IODB2Adapter {
 
     //
     boolean Running=false;
-    Map<Integer,Integer> RequestPIDCounter;
-    
+    Map<Integer,Integer> RequestPIDCounter=new HashMap<>();
+
     double TEMP_MAX = 130;
     double TEMP_MIN = 0;
     double SPEED_MAX = 200;
@@ -45,7 +46,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     double OTH_STEP = 4;
     //
     Random R;
-    Timer tmrODBEmulator;
+    Timer tmrODBEmulator = new Timer();
 
 
     public void GetSimpleInfo() {
