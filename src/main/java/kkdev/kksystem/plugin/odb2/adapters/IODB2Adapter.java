@@ -5,9 +5,6 @@
  */
 package kkdev.kksystem.plugin.odb2.adapters;
 
-import kkdev.kksystem.base.classes.odb2.ODB2Data;
-import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
-
 
 /**
  *
@@ -18,5 +15,6 @@ public interface IODB2Adapter {
     public void CheckState();
     
     public void RequestODBInfo(int[] REQ_PID);
+    public void RequestCEErrors();
     
 }

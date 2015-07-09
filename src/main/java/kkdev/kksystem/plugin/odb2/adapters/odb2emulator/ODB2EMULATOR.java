@@ -5,12 +5,15 @@
  */
 package kkdev.kksystem.plugin.odb2.adapters.odb2emulator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 import kkdev.kksystem.base.classes.odb2.ODB2Data;
+import static kkdev.kksystem.base.classes.odb2.ODB2_SAE_J1979_PID_MODE_1.*;
 import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
 import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo.ODB_State;
 import kkdev.kksystem.plugin.odb2.Global;
@@ -37,7 +40,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     //
     double TEMP_VAL = 98;
     double SPEED_VAL = 15;
-    int RPM_VAL = 3000;
+    double RPM_VAL = 3000;
     double VOLTAGE_VAL = 12;
 
     //
@@ -45,11 +48,24 @@ public class ODB2EMULATOR implements IODB2Adapter {
     double VOLT_STEP = 0.1;
     double OTH_STEP = 4;
     //
-    Random R;
+    Random R=new Random();
     Timer tmrODBEmulator = new Timer();
+    Map<Integer,List<Byte>> TestErrors;
 
+    public ODB2EMULATOR() {
+        TestErrors = new HashMap<>();
+        TestErrors.put(01, new ArrayList<>());
+        TestErrors.get(01).add((byte) 11);
+        TestErrors.get(01).add((byte) 21);
+        TestErrors.put(04, new ArrayList<>());
+        TestErrors.get(01).add((byte) 04);
+        TestErrors.get(01).add((byte) 22);
+        TestErrors.get(01).add((byte) 04);
+        TestErrors.get(01).add((byte) 22);
 
-    public void GetSimpleInfo() {
+    }
+
+    public ODB2Data GetSimpleInfo() {
         ODB2Data Ret;
         
         Ret = new ODB2Data();
@@ -70,12 +86,31 @@ public class ODB2EMULATOR implements IODB2Adapter {
         }
         RPM_VAL = RPM_VAL + RPM_STEP;
         //TEMP
-        if (TEMP_VAL + VOLT_STEP >= VOLTAGE_MAX | TEMP_VAL + VOLT_STEP <= VOLTAGE_MIN) {
+        if (TEMP_VAL + VOLT_STEP >= TEMP_MAX | TEMP_VAL + VOLT_STEP <= TEMP_MIN) {
             VOLT_STEP = -VOLT_STEP;
         }
         TEMP_VAL = TEMP_VAL + VOLT_STEP;
         //
-       // Ret.AddPID(RPM_VAL, RPM_VAL);
+        //VOLT
+        if (VOLTAGE_VAL + VOLT_STEP >= VOLTAGE_MAX | VOLTAGE_VAL + VOLT_STEP <= VOLTAGE_MIN) {
+            VOLT_STEP = -VOLT_STEP;
+        }
+        //
+        VOLTAGE_VAL = VOLTAGE_VAL + VOLT_STEP;
+        //
+        
+        if (RequestPIDCounter.containsKey(PID_0C_ENGINE_RPM) && RequestPIDCounter.get(PID_0C_ENGINE_RPM)>0)
+            Ret.AddPID(PID_0C_ENGINE_RPM, RPM_VAL);
+        
+        if (RequestPIDCounter.containsKey(PID_05_COLIANT_TEMP) && RequestPIDCounter.get(PID_05_COLIANT_TEMP)>0)
+            Ret.AddPID(PID_05_COLIANT_TEMP, TEMP_VAL);
+        
+        if (RequestPIDCounter.containsKey(PID_42_CONTROL_MODULE_VOLTAGE) && RequestPIDCounter.get(PID_42_CONTROL_MODULE_VOLTAGE)>0)
+            Ret.AddPID(PID_42_CONTROL_MODULE_VOLTAGE, VOLTAGE_VAL);
+        
+        if (RequestPIDCounter.containsKey(PID_0D_VEHICLE_SPEED) && RequestPIDCounter.get(PID_0D_VEHICLE_SPEED)>0)
+            Ret.AddPID(PID_0D_VEHICLE_SPEED, SPEED_VAL);
+        return Ret;
     }
 
     private final TimerTask TTask = new TimerTask() {
@@ -101,7 +136,17 @@ public class ODB2EMULATOR implements IODB2Adapter {
         //
         Global.PM.ODB_SendConnectionState(Global.PM.CurrentFeature,ODB_State.ODB_CONNECTOR_READY,"Debug Ok");
     }
-
+@Override
+    public void RequestCEErrors() {
+        ODB2Data Dat=new ODB2Data();
+        for (Integer Pfx:TestErrors.keySet())
+        {
+            for (Byte Val:TestErrors.get(Pfx))
+                Dat.AddError(Pfx, Val);
+        }
+        
+        Global.PM.ODB_SendODBErrors(Global.PM.CurrentFeature,Dat);
+    }
     @Override
     public void RequestODBInfo(int[] REQ_PID) {
         
@@ -125,10 +170,10 @@ public class ODB2EMULATOR implements IODB2Adapter {
     
     private void SendODBData()
     {
-        
-        
-      //  Global.PM.ODB_SendODBInfo(Global.PM.CurrentFeature, Dat);
+        Global.PM.ODB_SendODBInfo(Global.PM.CurrentFeature, GetSimpleInfo());
     }
+
+    
 
 
 }

@@ -77,7 +77,19 @@ public class ODB2Manager extends PluginManagerODB {
         {
             ODBAdapter.RequestODBInfo(CMD.RequestPIDs);
         }
+        else if (CMD.CommandData==KK_ODB_DATAPACKET.ODB_CE_ERRORS)
+        {
+            RequestCEErrors(CMD);
+        }
     }
+    private void RequestCEErrors(PinOdb2Command CMD) {
+        // This will be selector of error modes, by now only 03
+      //  if (CMD.CommandData==KK_ODB_DATAPACKET.ODB_PIDDATA)
+      //  {
+            ODBAdapter.RequestCEErrors();
+       // }
+    }
+    
     
     //
     //Adapter operations
