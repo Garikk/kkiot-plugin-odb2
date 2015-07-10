@@ -27,12 +27,17 @@ public class ELM327HW implements IODB2Adapter {
     }
 
     @Override
-    public void RequestODBInfo(int[] REQ_PID) {
+    public void RequestODBInfo(int[] REQ_PID,boolean Stop) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void RequestCEErrors() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void ClearCEErrors() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

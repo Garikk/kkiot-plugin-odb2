@@ -14,7 +14,8 @@ public interface IODB2Adapter {
     public void ConnectToVehicle();
     public void CheckState();
     
-    public void RequestODBInfo(int[] REQ_PID);
+    public void RequestODBInfo(int[] REQ_PID,boolean Stop);
     public void RequestCEErrors();
+    public void ClearCEErrors();
     
 }

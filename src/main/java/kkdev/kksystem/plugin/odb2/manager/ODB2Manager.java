@@ -1,6 +1,6 @@
 package kkdev.kksystem.plugin.odb2.manager;
 
-import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATAPACKET;
+import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATACOMMANDINFO;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Command;
 import kkdev.kksystem.base.classes.plugins.simple.managers.PluginManagerODB;
 import kkdev.kksystem.base.constants.PluginConsts;
@@ -26,18 +26,18 @@ public class ODB2Manager extends PluginManagerODB {
     static IODB2Adapter ODBAdapter;
 
     public void InitODB2(KKPlugin PConnector) {
-        CurrentFeature=KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID;
-        Connector=PConnector;
+        CurrentFeature = KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID;
+        Connector = PConnector;
         //
         PluginSettings.InitConfig();
         //
         InitAdapters();
     }
-    
+
     private void InitAdapters() {
         if (PluginSettings.MainConfiguration.ODBAdapter == ODB2Config.AdapterTypes.ELM327_RS232) {
             ODBAdapter = new ELM327HW();
-        } else if (PluginSettings.MainConfiguration.ODBAdapter==ODB2Config.AdapterTypes.ODB2_Emulator) {
+        } else if (PluginSettings.MainConfiguration.ODBAdapter == ODB2Config.AdapterTypes.ODB2_Emulator) {
             ODBAdapter = new ODB2EMULATOR();
         }
     }
@@ -65,37 +65,41 @@ public class ODB2Manager extends PluginManagerODB {
             case ODB_KKSYS_ADAPTER_DISCONNECT:    //connect to car diag system
                 break;
             case ODB_KKSYS_CAR_GETINFO:   //request pid info
-                RequestInfo(CMD);
+                RequestInfo(CMD, false);
+                break;
+            case ODB_KKSYS_CAR_GETINFO_STOP:   //request pid info
+                RequestInfo(CMD, true);
                 break;
             case ODB_KKSYS_CAR_EXEC_COMMAND:   //Exec ODB command
+                ExecCarCommand(CMD);
                 break;
         }
 
     }
-    private void RequestInfo(PinOdb2Command CMD) {
-        if (CMD.CommandData==KK_ODB_DATAPACKET.ODB_PIDDATA)
-        {
-            ODBAdapter.RequestODBInfo(CMD.RequestPIDs);
-        }
-        else if (CMD.CommandData==KK_ODB_DATAPACKET.ODB_CE_ERRORS)
-        {
+
+    private void RequestInfo(PinOdb2Command CMD, boolean Stop) {
+        if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_PIDDATA) {
+            ODBAdapter.RequestODBInfo(CMD.RequestPIDs, Stop);
+        } else if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_CE_ERRORS) {
             RequestCEErrors(CMD);
         }
     }
+
     private void RequestCEErrors(PinOdb2Command CMD) {
-        // This will be selector of error modes, by now only 03
-      //  if (CMD.CommandData==KK_ODB_DATAPACKET.ODB_PIDDATA)
-      //  {
-            ODBAdapter.RequestCEErrors();
-       // }
+        ODBAdapter.RequestCEErrors();
     }
-    
-    
+
+    private void ExecCarCommand(PinOdb2Command CMD) {
+
+        if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_CMD_CLEAR_CE_DATA) {
+            ODBAdapter.ClearCEErrors();
+        }
+    }
+
     //
     //Adapter operations
     //
-    private void ConnectToCar()
-    {
+    private void ConnectToCar() {
         ODBAdapter.ConnectToVehicle();
     }
 }
