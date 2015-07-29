@@ -21,12 +21,12 @@ public final class KKPlugin extends KKPluginBase {
     }
 
     @Override
-    public void PluginInit(IPluginBaseInterface BaseConnector) {
-        super.PluginInit(BaseConnector);
+    public void PluginInit(IPluginBaseInterface BaseConnector, String GlobalConfUID, String[] FeaturesUID) {
+        super.PluginInit(BaseConnector, GlobalConfUID, FeaturesUID); //To change body of generated methods, choose Tools | Templates.
         Global.PM.InitODB2(this);
     }
 
-   
+    
     @Override
     public PluginMessage ExecutePin(PluginMessage Pin) {
         super.ExecutePin(Pin);

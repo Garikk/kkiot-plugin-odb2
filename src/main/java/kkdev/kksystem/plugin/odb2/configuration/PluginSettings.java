@@ -13,12 +13,14 @@ import kkdev.kksystem.base.classes.plugins.simple.SettingsManager;
  */
 public abstract class PluginSettings {
 
-   public static final String ODB_CONF = "kk_plugin_odb2connector.json";
+   public static  String ODB_CONF;
    private static SettingsManager Settings;
 
     public static ODB2Config MainConfiguration;
 
-    public static void InitConfig() {
+    public static void InitConfig(String GlobalConfigUID,String FeatureUID, String MyUID) {
+         ODB_CONF=GlobalConfigUID+"_"+FeatureUID+"_"+MyUID + ".json";
+        
         Settings=new SettingsManager(ODB_CONF,ODB2Config.class);
         
         
