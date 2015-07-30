@@ -18,8 +18,8 @@ public abstract class PluginSettings {
 
     public static ODB2Config MainConfiguration;
 
-    public static void InitConfig(String GlobalConfigUID,String FeatureUID, String MyUID) {
-         ODB_CONF=GlobalConfigUID+"_"+FeatureUID+"_"+MyUID + ".json";
+    public static void InitConfig(String GlobalConfigUID, String MyUID) {
+         ODB_CONF=GlobalConfigUID+"_"+MyUID + ".json";
         
         Settings=new SettingsManager(ODB_CONF,ODB2Config.class);
         

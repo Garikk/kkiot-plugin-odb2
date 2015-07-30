@@ -29,7 +29,7 @@ public class ODB2Manager extends PluginManagerODB {
         CurrentFeature = KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID;
         Connector = PConnector;
         //
-        PluginSettings.InitConfig(PConnector.GlobalConfID,PConnector.Features[0],PConnector.PluginInfo.GetPluginInfo().PluginUUID);
+        PluginSettings.InitConfig(PConnector.GlobalConfID,PConnector.PluginInfo.GetPluginInfo().PluginUUID);
         //
         InitAdapters();
     }
