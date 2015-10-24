@@ -7,7 +7,7 @@ package kkdev.kksystem.plugin.odb2;
  */
 
 
-import kkdev.kksystem.base.constants.PluginConsts.KK_PLUGIN_TYPE;
+
 import kkdev.kksystem.base.classes.plugins.PluginInfo;
 import kkdev.kksystem.base.classes.plugins.simple.IPluginInfoRequest;
 import kkdev.kksystem.base.constants.PluginConsts;
@@ -24,7 +24,6 @@ public class ODBPluginInfo  implements IPluginInfoRequest {
         
         Ret.PluginName="KKODB2Reader";
         Ret.PluginDescription="Basic ELM327 ODB2 Reader plugin";
-        Ret.PluginType = KK_PLUGIN_TYPE.PLUGIN_INPUT;
         Ret.PluginVersion=1;
         Ret.Enabled=true;
         Ret.ReceivePins = GetMyReceivePinInfo();
