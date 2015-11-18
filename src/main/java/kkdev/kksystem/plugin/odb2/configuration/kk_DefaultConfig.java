@@ -18,10 +18,10 @@ public abstract class kk_DefaultConfig {
         ODB2Config DefConf = new ODB2Config();
         
       //  DefConf.ODBAdapter=ODB2Config.AdapterTypes.ELM327_RS232;
-      //  DefConf.RS232AutoFind=false;
+      //  DefConf.RS232AutoFind=true;
        // DefConf.RS232ConnectPort="//dev//ttyUSB0"; // CHANGE!!
         DefConf.ODBAdapter=ODB2Config.AdapterTypes.ODB2_Emulator;
-        DefConf.RS232AutoFind=false;
+        DefConf.RS232AutoFind=true;
         DefConf.RS232ConnectPort="none"; // CHANGE!!
         return DefConf;
     }
