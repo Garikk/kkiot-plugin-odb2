@@ -1,5 +1,6 @@
 package kkdev.kksystem.plugin.odb2.manager;
 
+import static java.lang.System.out;
 import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATACOMMANDINFO;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Command;
 import kkdev.kksystem.base.classes.plugins.simple.managers.PluginManagerODB;
@@ -43,7 +44,6 @@ public class ODB2Manager extends PluginManagerODB {
     }
 
     public void ReceivePin(String PinName, Object PinData) {
-
         switch (PinName) {
             case PluginConsts.KK_PLUGIN_BASE_ODB2_COMMAND:
                 PinOdb2Command CMD;
