@@ -3,6 +3,7 @@ package kkdev.kksystem.plugin.odb2.manager;
 import static java.lang.System.out;
 import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATACOMMANDINFO;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Command;
+import kkdev.kksystem.base.classes.odb2.PinOdb2Data;
 import kkdev.kksystem.base.classes.plugins.simple.managers.PluginManagerODB;
 import kkdev.kksystem.base.constants.PluginConsts;
 import static kkdev.kksystem.base.constants.SystemConsts.KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID;
@@ -71,7 +72,7 @@ public class ODB2Manager extends PluginManagerODB {
                 RequestInfo(CMD, true);
                 break;
             case ODB_KKSYS_CAR_EXEC_COMMAND:   //Exec ODB command
-                ExecCarCommand(CMD);
+                ExecCarCommand(CMD,(PinOdb2Data)CMD.ObjectData);
                 break;
         }
 
@@ -81,18 +82,18 @@ public class ODB2Manager extends PluginManagerODB {
         if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_PIDDATA) {
             ODBAdapter.RequestODBInfo(CMD.RequestPIDs, Stop);
         } else if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_CE_ERRORS) {
-            RequestCEErrors(CMD);
+            RequestCEErrors(CMD,(PinOdb2Data)CMD.ObjectData);
         }
     }
 
-    private void RequestCEErrors(PinOdb2Command CMD) {
-        ODBAdapter.RequestCEErrors();
+    private void RequestCEErrors(PinOdb2Command CMD, PinOdb2Data Dat) {
+        ODBAdapter.RequestCEErrors(Dat.FeatureUID);
     }
 
-    private void ExecCarCommand(PinOdb2Command CMD) {
+    private void ExecCarCommand(PinOdb2Command CMD, PinOdb2Data Dat) {
 
         if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_CMD_CLEAR_CE_DATA) {
-            ODBAdapter.ClearCEErrors();
+            ODBAdapter.ClearCEErrors(Dat.FeatureUID);
         }
     }
 

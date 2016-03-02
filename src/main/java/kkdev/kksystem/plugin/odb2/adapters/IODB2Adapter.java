@@ -15,7 +15,7 @@ public interface IODB2Adapter {
     public void CheckState();
     
     public void RequestODBInfo(int[] REQ_PID,boolean Stop);
-    public void RequestCEErrors();
-    public void ClearCEErrors();
+    public void RequestCEErrors(String FeatureID);
+    public void ClearCEErrors(String FeatureID);
     
 }

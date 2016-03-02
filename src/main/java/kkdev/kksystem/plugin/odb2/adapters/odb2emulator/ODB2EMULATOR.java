@@ -151,7 +151,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     }
 
     @Override
-    public void RequestCEErrors() {
+    public void RequestCEErrors(String FeatureID) {
         ODB2Data Dat = new ODB2Data();
         for (Integer Pfx : TestErrors.keySet()) {
             for (Byte Val : TestErrors.get(Pfx)) {
@@ -159,7 +159,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
             }
         }
 
-        Global.PM.ODB_SendODBErrors(Global.PM.CurrentFeature, GetConnectorInfo(), Dat);
+        Global.PM.ODB_SendODBErrors(FeatureID, GetConnectorInfo(), Dat);
     }
 
     @Override
@@ -199,8 +199,8 @@ public class ODB2EMULATOR implements IODB2Adapter {
     }
 
     @Override
-    public void ClearCEErrors() {
+    public void ClearCEErrors(String FeatureID) {
         TestErrors = new HashMap<>();
-        RequestCEErrors();
+        RequestCEErrors(FeatureID);
     }
 }
