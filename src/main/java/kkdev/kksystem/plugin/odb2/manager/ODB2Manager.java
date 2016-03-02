@@ -44,12 +44,12 @@ public class ODB2Manager extends PluginManagerODB {
         }
     }
 
-    public void ReceivePin(String PinName, Object PinData) {
+    public void ReceivePin(String FeatureID,String PinName, Object PinData) {
         switch (PinName) {
             case PluginConsts.KK_PLUGIN_BASE_ODB2_COMMAND:
                 PinOdb2Command CMD;
                 CMD = (PinOdb2Command) PinData;
-                ProcessCommand(CMD);
+                ProcessCommand(FeatureID,CMD);
                 break;
             case PluginConsts.KK_PLUGIN_BASE_PIN_COMMAND:
                 //This plugin is not use changes of currentfeature
@@ -58,7 +58,7 @@ public class ODB2Manager extends PluginManagerODB {
 
     }
 
-    private void ProcessCommand(PinOdb2Command CMD) {
+    private void ProcessCommand(String FeatureID,PinOdb2Command CMD) {
         switch (CMD.Command) {
             case ODB_KKSYS_ADAPTER_CONNECT:    //connect to car diag system
                 ConnectToCar();
@@ -66,34 +66,37 @@ public class ODB2Manager extends PluginManagerODB {
             case ODB_KKSYS_ADAPTER_DISCONNECT:    //connect to car diag system
                 break;
             case ODB_KKSYS_CAR_GETINFO:   //request pid info
-                RequestInfo(CMD, false);
+                RequestInfo(FeatureID,CMD, false);
                 break;
             case ODB_KKSYS_CAR_GETINFO_STOP:   //request pid info
-                RequestInfo(CMD, true);
+                RequestInfo(FeatureID,CMD, true);
                 break;
             case ODB_KKSYS_CAR_EXEC_COMMAND:   //Exec ODB command
-                ExecCarCommand(CMD,(PinOdb2Data)CMD.ObjectData);
+                ExecCarCommand(FeatureID,CMD);
                 break;
         }
 
     }
 
-    private void RequestInfo(PinOdb2Command CMD, boolean Stop) {
+    private void RequestInfo(String FeatureID,PinOdb2Command CMD, boolean Stop) {
         if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_PIDDATA) {
             ODBAdapter.RequestODBInfo(CMD.RequestPIDs, Stop);
         } else if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_CE_ERRORS) {
-            RequestCEErrors(CMD,(PinOdb2Data)CMD.ObjectData);
+         
+            RequestCEErrors(FeatureID,CMD);
+
         }
     }
 
-    private void RequestCEErrors(PinOdb2Command CMD, PinOdb2Data Dat) {
-        ODBAdapter.RequestCEErrors(Dat.FeatureUID);
+    private void RequestCEErrors(String FeatureID,PinOdb2Command CMD) {
+                     
+        ODBAdapter.RequestCEErrors(FeatureID);
     }
 
-    private void ExecCarCommand(PinOdb2Command CMD, PinOdb2Data Dat) {
+    private void ExecCarCommand(String FeatureID,PinOdb2Command CMD) {
 
         if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_CMD_CLEAR_CE_DATA) {
-            ODBAdapter.ClearCEErrors(Dat.FeatureUID);
+            ODBAdapter.ClearCEErrors(FeatureID);
         }
     }
 
