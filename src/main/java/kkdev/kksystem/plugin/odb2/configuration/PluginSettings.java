@@ -24,7 +24,7 @@ public abstract class PluginSettings {
         Settings=new SettingsManager(ODB_CONF,ODB2Config.class);
         
         
-        System.out.println("[ODB2][CONFIG] Load configuration");
+      //  System.out.println("[ODB2][CONFIG] Load configuration");
         MainConfiguration=(ODB2Config)Settings.LoadConfig();
 
         if (MainConfiguration == null) {
