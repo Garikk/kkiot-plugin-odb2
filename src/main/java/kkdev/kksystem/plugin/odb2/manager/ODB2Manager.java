@@ -1,11 +1,13 @@
 package kkdev.kksystem.plugin.odb2.manager;
 
 import static java.lang.System.out;
+import java.util.HashMap;
 import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATACOMMANDINFO;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Command;
 import kkdev.kksystem.base.classes.odb2.PinOdb2Data;
 import kkdev.kksystem.base.classes.plugins.simple.managers.PluginManagerODB;
 import kkdev.kksystem.base.constants.PluginConsts;
+import kkdev.kksystem.base.constants.SystemConsts;
 import static kkdev.kksystem.base.constants.SystemConsts.KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID;
 import kkdev.kksystem.plugin.odb2.KKPlugin;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
@@ -28,7 +30,8 @@ public class ODB2Manager extends PluginManagerODB {
     static IODB2Adapter ODBAdapter;
 
     public void InitODB2(KKPlugin PConnector) {
-        CurrentFeature = KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID;
+        CurrentFeature=new HashMap<>();
+        CurrentFeature.put(SystemConsts.KK_BASE_UICONTEXT_DEFAULT, KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID);
         Connector = PConnector;
         //
         PluginSettings.InitConfig(PConnector.GlobalConfID,PConnector.PluginInfo.GetPluginInfo().PluginUUID);

@@ -15,6 +15,7 @@ import java.util.TimerTask;
 import kkdev.kksystem.base.classes.odb2.ODB2Data;
 import static kkdev.kksystem.base.classes.odb2.ODB2_SAE_J1979_PID_MODE_1.*;
 import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
+import kkdev.kksystem.base.constants.SystemConsts;
 import kkdev.kksystem.plugin.odb2.Global;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 
@@ -131,7 +132,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     @Override
     public void ConnectToVehicle() {
 
-        Global.PM.ODB_SendConnectionState(Global.PM.CurrentFeature, GetConnectorInfo());
+        Global.PM.ODB_SendConnectionState(Global.PM.CurrentFeature.get(SystemConsts.KK_BASE_UICONTEXT_DEFAULT), GetConnectorInfo());
 
     }
 
@@ -139,7 +140,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     public void CheckState() {
         PinOdb2ConnectorInfo Ret = GetConnectorInfo();
         //
-        Global.PM.ODB_SendConnectionState(Global.PM.CurrentFeature, GetConnectorInfo());
+        Global.PM.ODB_SendConnectionState(Global.PM.CurrentFeature.get(SystemConsts.KK_BASE_UICONTEXT_DEFAULT), GetConnectorInfo());
     }
 
     public PinOdb2ConnectorInfo GetConnectorInfo() {
@@ -194,7 +195,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     private void SendODBData() {
         ODB2Data D = GetSimpleInfo();
         if (D != null) {
-            Global.PM.ODB_SendODBInfo(Global.PM.CurrentFeature, GetConnectorInfo(), D);
+            Global.PM.ODB_SendODBInfo(Global.PM.CurrentFeature.get(SystemConsts.KK_BASE_UICONTEXT_DEFAULT), GetConnectorInfo(), D);
         }
     }
 
