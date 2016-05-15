@@ -62,6 +62,7 @@ public class ODB2Manager extends PluginManagerODB {
     }
 
     private void ProcessCommand(String FeatureID,PinOdb2Command CMD) {
+ 
         switch (CMD.Command) {
             case ODB_KKSYS_ADAPTER_CONNECT:    //connect to car diag system
                 ConnectToCar();

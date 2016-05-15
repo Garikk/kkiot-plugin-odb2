@@ -54,14 +54,13 @@ public class ODB2EMULATOR implements IODB2Adapter {
 
     public ODB2EMULATOR() {
         TestErrors = new HashMap<>();
-        TestErrors.put(01, new ArrayList<>());
-        TestErrors.get(01).add((byte) 11);
-        TestErrors.get(01).add((byte) 21);
-        TestErrors.put(04, new ArrayList<>());
-        TestErrors.get(04).add((byte) 04);
-        TestErrors.get(04).add((byte) 22);
-        TestErrors.get(04).add((byte) 04);
-        TestErrors.get(04).add((byte) 22);
+        TestErrors.put(02, new ArrayList<>());
+        TestErrors.get(02).add((byte) 40);
+        TestErrors.get(02).add((byte) 21);
+
+//        TestErrors.get(04).add((byte) 22);
+//        TestErrors.get(04).add((byte) 04);
+//        TestErrors.get(04).add((byte) 22);
 
     }
 
@@ -159,7 +158,6 @@ public class ODB2EMULATOR implements IODB2Adapter {
                 Dat.AddError(Pfx, Val);
             }
         }
-
         Global.PM.ODB_SendODBErrors(FeatureID, GetConnectorInfo(), Dat);
     }
 
