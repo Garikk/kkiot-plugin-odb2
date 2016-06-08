@@ -99,22 +99,22 @@ public class ODB2EMULATOR implements IODB2Adapter {
         //
 
         if (RequestPIDCounter.containsKey(PID_0C_ENGINE_RPM) && RequestPIDCounter.get(PID_0C_ENGINE_RPM) > 0) {
-            Ret.AddPID(PID_0C_ENGINE_RPM, RPM_VAL);
+            Ret.addPID(PID_0C_ENGINE_RPM, RPM_VAL);
         }
 
         if (RequestPIDCounter.containsKey(PID_05_COLIANT_TEMP) && RequestPIDCounter.get(PID_05_COLIANT_TEMP) > 0) {
-            Ret.AddPID(PID_05_COLIANT_TEMP, TEMP_VAL);
+            Ret.addPID(PID_05_COLIANT_TEMP, TEMP_VAL);
         }
 
         if (RequestPIDCounter.containsKey(PID_42_CONTROL_MODULE_VOLTAGE) && RequestPIDCounter.get(PID_42_CONTROL_MODULE_VOLTAGE) > 0) {
-            Ret.AddPID(PID_42_CONTROL_MODULE_VOLTAGE, VOLTAGE_VAL);
+            Ret.addPID(PID_42_CONTROL_MODULE_VOLTAGE, VOLTAGE_VAL);
         }
 
         if (RequestPIDCounter.containsKey(PID_0D_VEHICLE_SPEED) && RequestPIDCounter.get(PID_0D_VEHICLE_SPEED) > 0) {
-            Ret.AddPID(PID_0D_VEHICLE_SPEED, SPEED_VAL);
+            Ret.addPID(PID_0D_VEHICLE_SPEED, SPEED_VAL);
         }
 
-        if (!Ret.GetHT().isEmpty()) {
+        if (!Ret.getHT().isEmpty()) {
             return Ret;
         } else {
             return null;
@@ -131,7 +131,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     @Override
     public void ConnectToVehicle() {
 
-        Global.PM.ODB_SendConnectionState(Global.PM.CurrentFeature.get(SystemConsts.KK_BASE_UICONTEXT_DEFAULT), GetConnectorInfo());
+        Global.PM.ODB_SendConnectionState(Global.PM.currentFeature.get(SystemConsts.KK_BASE_UICONTEXT_DEFAULT), GetConnectorInfo());
 
     }
 
@@ -139,14 +139,14 @@ public class ODB2EMULATOR implements IODB2Adapter {
     public void CheckState() {
         PinOdb2ConnectorInfo Ret = GetConnectorInfo();
         //
-        Global.PM.ODB_SendConnectionState(Global.PM.CurrentFeature.get(SystemConsts.KK_BASE_UICONTEXT_DEFAULT), GetConnectorInfo());
+        Global.PM.ODB_SendConnectionState(Global.PM.currentFeature.get(SystemConsts.KK_BASE_UICONTEXT_DEFAULT), GetConnectorInfo());
     }
 
     public PinOdb2ConnectorInfo GetConnectorInfo() {
         PinOdb2ConnectorInfo Ret;
         Ret = new PinOdb2ConnectorInfo();
-        Ret.OdbAdapterState = PinOdb2ConnectorInfo.ODB_State.ODB_CONNECTOR_READY;
-        Ret.OdbAdapterDescripton = "Debug adapter";
+        Ret.odbAdapterState = PinOdb2ConnectorInfo.ODB_State.ODB_CONNECTOR_READY;
+        Ret.odbAdapterDescripton = "Debug adapter";
         return Ret;
     }
 
@@ -155,7 +155,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
         ODB2Data Dat = new ODB2Data();
         for (Integer Pfx : TestErrors.keySet()) {
             for (Byte Val : TestErrors.get(Pfx)) {
-                Dat.AddError(Pfx, Val);
+                Dat.addError(Pfx, Val);
             }
         }
         Global.PM.ODB_SendODBErrors(FeatureID, GetConnectorInfo(), Dat);
@@ -193,7 +193,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     private void SendODBData() {
         ODB2Data D = GetSimpleInfo();
         if (D != null) {
-            Global.PM.ODB_SendODBInfo(Global.PM.CurrentFeature.get(SystemConsts.KK_BASE_UICONTEXT_DEFAULT), GetConnectorInfo(), D);
+            Global.PM.ODB_SendODBInfo(Global.PM.currentFeature.get(SystemConsts.KK_BASE_UICONTEXT_DEFAULT), GetConnectorInfo(), D);
         }
     }
 

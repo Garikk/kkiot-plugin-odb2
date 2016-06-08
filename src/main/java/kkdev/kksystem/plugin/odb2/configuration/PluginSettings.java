@@ -25,12 +25,12 @@ public abstract class PluginSettings {
         
         
       //  System.out.println("[ODB2][CONFIG] Load configuration");
-        MainConfiguration=(ODB2Config)Settings.LoadConfig();
+        MainConfiguration=(ODB2Config)Settings.loadConfig();
 
         if (MainConfiguration == null) {
             System.out.println("[ODB2][CONFIG] Error Load configuration, try create default config");
-            Settings.SaveConfig(kk_DefaultConfig.MakeDefaultConfig());
-            MainConfiguration=(ODB2Config)Settings.LoadConfig();
+            Settings.saveConfig(kk_DefaultConfig.MakeDefaultConfig());
+            MainConfiguration=(ODB2Config)Settings.loadConfig();
         }
         if (MainConfiguration == null) {
             System.out.println("[ODB2][CONFIG] Load configuration, fatal");

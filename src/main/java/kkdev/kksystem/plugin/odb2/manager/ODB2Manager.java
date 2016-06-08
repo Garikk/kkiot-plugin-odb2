@@ -30,11 +30,11 @@ public class ODB2Manager extends PluginManagerODB {
     static IODB2Adapter ODBAdapter;
 
     public void InitODB2(KKPlugin PConnector) {
-        CurrentFeature=new HashMap<>();
-        CurrentFeature.put(SystemConsts.KK_BASE_UICONTEXT_DEFAULT, KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID);
-        Connector = PConnector;
+        currentFeature=new HashMap<>();
+        currentFeature.put(SystemConsts.KK_BASE_UICONTEXT_DEFAULT, KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID);
+        connector = PConnector;
         //
-        PluginSettings.InitConfig(PConnector.GlobalConfID,PConnector.PluginInfo.GetPluginInfo().PluginUUID);
+        PluginSettings.InitConfig(PConnector.globalConfID,PConnector.pluginInfo.getPluginInfo().PluginUUID);
         //
         InitAdapters();
     }
@@ -63,7 +63,7 @@ public class ODB2Manager extends PluginManagerODB {
 
     private void ProcessCommand(String FeatureID,PinOdb2Command CMD) {
  
-        switch (CMD.Command) {
+        switch (CMD.command) {
             case ODB_KKSYS_ADAPTER_CONNECT:    //connect to car diag system
                 ConnectToCar();
                 break;
@@ -83,9 +83,9 @@ public class ODB2Manager extends PluginManagerODB {
     }
 
     private void RequestInfo(String FeatureID,PinOdb2Command CMD, boolean Stop) {
-        if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_PIDDATA) {
-            ODBAdapter.RequestODBInfo(CMD.RequestPIDs, Stop);
-        } else if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_CE_ERRORS) {
+        if (CMD.commandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_PIDDATA) {
+            ODBAdapter.RequestODBInfo(CMD.requestPIDs, Stop);
+        } else if (CMD.commandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_CE_ERRORS) {
          
             RequestCEErrors(FeatureID,CMD);
 
@@ -99,7 +99,7 @@ public class ODB2Manager extends PluginManagerODB {
 
     private void ExecCarCommand(String FeatureID,PinOdb2Command CMD) {
 
-        if (CMD.CommandData == KK_ODB_DATACOMMANDINFO.ODB_CMD_CLEAR_CE_DATA) {
+        if (CMD.commandData == KK_ODB_DATACOMMANDINFO.ODB_CMD_CLEAR_CE_DATA) {
             ODBAdapter.ClearCEErrors(FeatureID);
         }
     }
