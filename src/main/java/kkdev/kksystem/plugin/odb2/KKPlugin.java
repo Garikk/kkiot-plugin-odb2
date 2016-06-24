@@ -30,7 +30,7 @@ public final class KKPlugin extends KKPluginBase {
     @Override
     public PluginMessage executePin(PluginMessage Pin) {
         super.executePin(Pin);
-       Global.PM.ReceivePin(Pin.FeatureID,Pin.PinName, Pin.PinData);
+       Global.PM.ReceivePin(Pin.FeatureID,Pin.pinName, Pin.getPinData());
         return null;
     }
 }
