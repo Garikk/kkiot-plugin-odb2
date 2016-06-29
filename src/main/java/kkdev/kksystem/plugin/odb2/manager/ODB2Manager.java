@@ -30,7 +30,7 @@ public class ODB2Manager extends PluginManagerODB {
     public void InitODB2(KKPlugin PConnector) {
         currentFeature=new HashMap<>();
         currentFeature.put(SystemConsts.KK_BASE_UICONTEXT_DEFAULT, KK_BASE_FEATURES_SYSTEM_MULTIFEATURE_UID);
-        connector = PConnector;
+        setPluginConnector(PConnector);
         //
         PluginSettings.InitConfig(PConnector.globalConfID,PConnector.pluginInfo.getPluginInfo().PluginUUID);
         //
