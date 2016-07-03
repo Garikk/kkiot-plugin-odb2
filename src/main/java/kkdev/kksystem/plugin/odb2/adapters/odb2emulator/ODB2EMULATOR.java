@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
 import kkdev.kksystem.base.classes.odb2.ODB2Data;
@@ -151,7 +152,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     }
 
     @Override
-    public void RequestCEErrors(String FeatureID) {
+    public void RequestCEErrors(Set<String> FeatureID) {
         ODB2Data Dat = new ODB2Data();
         for (Integer Pfx : TestErrors.keySet()) {
             for (Byte Val : TestErrors.get(Pfx)) {
@@ -198,7 +199,7 @@ public class ODB2EMULATOR implements IODB2Adapter {
     }
 
     @Override
-    public void ClearCEErrors(String FeatureID) {
+    public void ClearCEErrors(Set<String> FeatureID) {
         TestErrors = new HashMap<>();
         RequestCEErrors(FeatureID);
     }

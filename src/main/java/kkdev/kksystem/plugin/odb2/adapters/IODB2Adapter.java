@@ -5,6 +5,8 @@
  */
 package kkdev.kksystem.plugin.odb2.adapters;
 
+import java.util.Set;
+
 
 /**
  *
@@ -15,7 +17,7 @@ public interface IODB2Adapter {
     public void CheckState();
     
     public void RequestODBInfo(int[] REQ_PID,boolean Stop);
-    public void RequestCEErrors(String FeatureID);
-    public void ClearCEErrors(String FeatureID);
+    public void RequestCEErrors(Set<String> FeatureID);
+    public void ClearCEErrors(Set<String> FeatureID);
     
 }

@@ -1,6 +1,7 @@
 package kkdev.kksystem.plugin.odb2.manager;
 
 import java.util.HashMap;
+import java.util.Set;
 import kkdev.kksystem.base.classes.odb2.ODBConstants.KK_ODB_DATACOMMANDINFO;
 import kkdev.kksystem.base.classes.odb2.PinDataOdb2;
 import kkdev.kksystem.base.classes.plugins.simple.managers.PluginManagerODB;
@@ -45,7 +46,7 @@ public class ODB2Manager extends PluginManagerODB {
         }
     }
 
-    public void ReceivePin(String FeatureID,String PinName, Object PinData) {
+    public void ReceivePin(Set<String> FeatureID,String PinName, Object PinData) {
         switch (PinName) {
             case PluginConsts.KK_PLUGIN_BASE_ODB2_COMMAND:
                 PinDataOdb2 CMD;
@@ -59,7 +60,7 @@ public class ODB2Manager extends PluginManagerODB {
 
     }
 
-    private void ProcessCommand(String FeatureID,PinDataOdb2 CMD) {
+    private void ProcessCommand(Set<String> FeatureID,PinDataOdb2 CMD) {
  
         switch (CMD.command) {
             case ODB_KKSYS_ADAPTER_CONNECT:    //connect to car diag system
@@ -80,7 +81,7 @@ public class ODB2Manager extends PluginManagerODB {
 
     }
 
-    private void RequestInfo(String FeatureID,PinDataOdb2 CMD, boolean Stop) {
+    private void RequestInfo(Set<String> FeatureID,PinDataOdb2 CMD, boolean Stop) {
         if (CMD.commandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_PIDDATA) {
             ODBAdapter.RequestODBInfo(CMD.requestPIDs, Stop);
         } else if (CMD.commandData == KK_ODB_DATACOMMANDINFO.ODB_GETINFO_CE_ERRORS) {
@@ -90,12 +91,12 @@ public class ODB2Manager extends PluginManagerODB {
         }
     }
 
-    private void RequestCEErrors(String FeatureID,PinDataOdb2 CMD) {
+    private void RequestCEErrors(Set<String> FeatureID,PinDataOdb2 CMD) {
                      
         ODBAdapter.RequestCEErrors(FeatureID);
     }
 
-    private void ExecCarCommand(String FeatureID,PinDataOdb2 CMD) {
+    private void ExecCarCommand(Set<String> FeatureID,PinDataOdb2 CMD) {
 
         if (CMD.commandData == KK_ODB_DATACOMMANDINFO.ODB_CMD_CLEAR_CE_DATA) {
             ODBAdapter.ClearCEErrors(FeatureID);

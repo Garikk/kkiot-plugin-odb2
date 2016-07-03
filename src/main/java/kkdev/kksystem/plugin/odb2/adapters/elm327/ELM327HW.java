@@ -5,6 +5,7 @@
  */
 package kkdev.kksystem.plugin.odb2.adapters.elm327;
 
+import java.util.Set;
 import kkdev.kksystem.base.classes.odb2.ODB2Data;
 import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
@@ -32,12 +33,12 @@ public class ELM327HW implements IODB2Adapter {
     }
 
     @Override
-    public void RequestCEErrors(String FeatureID) {
+    public void RequestCEErrors(Set<String> FeatureID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void ClearCEErrors(String FeatureID) {
+    public void ClearCEErrors(Set<String> FeatureID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
