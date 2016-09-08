@@ -7,8 +7,8 @@ package kkdev.kksystem.plugin.odb2;
  */
 import kkdev.kksystem.base.classes.plugins.PluginMessage;
 import kkdev.kksystem.base.classes.plugins.simple.KKPluginBase;
-import kkdev.kksystem.base.interfaces.IPluginBaseInterface;
 import kkdev.kksystem.plugin.odb2.manager.ODB2Manager;
+import kkdev.kksystem.base.interfaces.IPluginBaseConnection;
 
 /**
  *
@@ -21,7 +21,7 @@ public final class KKPlugin extends KKPluginBase {
     }
 
     @Override
-    public void pluginInit(IPluginBaseInterface BaseConnector, String GlobalConfUID) {
+    public void pluginInit(IPluginBaseConnection BaseConnector, String GlobalConfUID) {
         super.pluginInit(BaseConnector, GlobalConfUID); //To change body of generated methods, choose Tools | Templates.
         Global.PM.InitODB2(this);
     }
