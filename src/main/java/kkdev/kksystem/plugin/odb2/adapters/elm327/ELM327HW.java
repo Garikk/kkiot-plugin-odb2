@@ -6,7 +6,7 @@
 package kkdev.kksystem.plugin.odb2.adapters.elm327;
 
 import java.util.Set;
-import kkdev.kksystem.base.classes.odb2.ODB2Data;
+
 import kkdev.kksystem.base.classes.odb2.PinOdb2ConnectorInfo;
 import kkdev.kksystem.plugin.odb2.adapters.IODB2Adapter;
 

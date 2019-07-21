@@ -55,9 +55,9 @@ public class ODB2EMULATOR implements IODB2Adapter {
 
     public ODB2EMULATOR() {
         TestErrors = new HashMap<>();
-        TestErrors.put(02, new ArrayList<>());
-        TestErrors.get(02).add((byte) 40);
-        TestErrors.get(02).add((byte) 21);
+        TestErrors.put(2, new ArrayList<>());
+        TestErrors.get(2).add((byte) 40);
+        TestErrors.get(2).add((byte) 21);
 
 //        TestErrors.get(04).add((byte) 22);
 //        TestErrors.get(04).add((byte) 04);

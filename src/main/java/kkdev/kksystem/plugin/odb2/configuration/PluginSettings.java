@@ -14,23 +14,22 @@ import kkdev.kksystem.base.classes.plugins.simple.SettingsManager;
 public abstract class PluginSettings {
 
    public static  String ODB_CONF;
-   private static SettingsManager Settings;
 
     public static ODB2Config MainConfiguration;
 
     public static void InitConfig(String GlobalConfigUID, String MyUID) {
          ODB_CONF=GlobalConfigUID+"_"+MyUID + ".json";
-        
-        Settings=new SettingsManager(ODB_CONF,ODB2Config.class);
+
+        SettingsManager settings = new SettingsManager(ODB_CONF, ODB2Config.class);
         
         
       //  System.out.println("[ODB2][CONFIG] Load configuration");
-        MainConfiguration=(ODB2Config)Settings.loadConfig();
+        MainConfiguration=(ODB2Config) settings.loadConfig();
 
         if (MainConfiguration == null) {
             System.out.println("[ODB2][CONFIG] Error Load configuration, try create default config");
-            Settings.saveConfig(kk_DefaultConfig.MakeDefaultConfig());
-            MainConfiguration=(ODB2Config)Settings.loadConfig();
+            settings.saveConfig(kk_DefaultConfig.MakeDefaultConfig());
+            MainConfiguration=(ODB2Config) settings.loadConfig();
         }
         if (MainConfiguration == null) {
             System.out.println("[ODB2][CONFIG] Load configuration, fatal");

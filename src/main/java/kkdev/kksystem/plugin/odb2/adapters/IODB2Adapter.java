@@ -13,11 +13,11 @@ import java.util.Set;
  * @author blinov_is
  */
 public interface IODB2Adapter {
-    public void ConnectToVehicle();
-    public void CheckState();
+    void ConnectToVehicle();
+    void CheckState();
     
-    public void RequestODBInfo(int[] REQ_PID,boolean Stop);
-    public void RequestCEErrors(Set<String> FeatureID);
-    public void ClearCEErrors(Set<String> FeatureID);
+    void RequestODBInfo(int[] REQ_PID, boolean Stop);
+    void RequestCEErrors(Set<String> FeatureID);
+    void ClearCEErrors(Set<String> FeatureID);
     
 }
